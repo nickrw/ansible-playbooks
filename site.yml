@@ -1,0 +1,17 @@
+---
+
+- hosts: personal
+  roles: 
+    - { role: comforts, become: yes }
+    - { role: cronapt, become: yes }
+    - { role: python, become: yes }
+
+- hosts: fitz.nick.rw
+  roles: 
+    - role: znc
+      become: yes
+      become_user: nickrw
+    - role: twg
+      tags: twg
+      twg_repo_url: git@github.com:nickrw/TWGbot.git
+      #twg_freenode_password set via vault'd host_var

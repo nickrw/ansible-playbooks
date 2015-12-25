@@ -1,0 +1,5 @@
+---
+ - git: repo={{twg_repo_url}} dest=~/code/twg accept_hostkey=yes
+ - template: src=cinchize.yml.j2 dest=~/code/twg/cinchize.yml
+ - command: gem2.1 build twg.gemspec chdir=~/code/twg creates=~/code/twg/twg-2.0.0.gem
+   notify: twg gem installation

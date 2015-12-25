@@ -1,0 +1,11 @@
+---
+   # not using 'become' here because I don't know the path to the unprivileged
+   # home directory afterwards.
+   # Really should change this to use a user-specific gem path
+ - name: twg gem installation
+   command: sudo gem2.1 install --no-ri --no-rdoc ~/code/twg/twg-2.0.0.gem
+
+   # Move this to supervisor or a systemd unit - this doesn't actually
+   # get used, it's just an example
+ - name: run twg
+   shell: nohup cinchize --start freenode & chdir=~/code/twg

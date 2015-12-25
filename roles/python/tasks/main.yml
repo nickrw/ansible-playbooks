@@ -1,0 +1,15 @@
+---
+ - name: pythons
+   apt:
+       name:
+         - python
+         - python-dev
+         - python-pip
+         - python3
+         - python3-dev
+         - python3-pip
+ - name: pip packages
+   pip: executable={{item[0]}} name={{item[1]}} extra_args=--upgrade state=latest
+   with_nested:
+     - [ 'pip2', 'pip3' ]
+     - [ 'pip', 'virtualenv', 'wheel', 'ipython' ]

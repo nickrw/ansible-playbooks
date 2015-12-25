@@ -1,0 +1,3 @@
+---
+ - name: sudoers
+   copy: src=sudoers dest=/etc/sudoers owner=root group=root mode=0440

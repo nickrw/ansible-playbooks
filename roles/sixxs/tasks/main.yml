@@ -1,0 +1,4 @@
+---
+ - copy: src=interfaces dest=/etc/network/interfaces
+   notify:
+     - bring up sixxs interface

@@ -1,0 +1,3 @@
+---
+ - apt: name=cron-apt
+ - copy: src=action.d/ dest=/etc/cron-apt/action.d/

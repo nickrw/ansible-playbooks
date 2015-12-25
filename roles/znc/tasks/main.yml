@@ -1,0 +1,27 @@
+---
+ - apt_repository: repo='deb-src http://cloudfront.debian.net/debian sid main' update_cache=yes
+   become: yes
+   become_user: root
+   changed_when: False
+ - apt: name=znc state=build-dep
+   become: yes
+   become_user: root
+ - script: build.sh creates=/usr/bin/znc
+ - file: path=~/.znc state=directory
+ - file: path=~/.znc/configs state=directory
+ - file: path=~/.znc/modules state=directory
+ - copy: src=configs/ dest=~/.znc/configs/
+   notify:
+     - znc-permissions
+ - copy: src=modules/ dest=~/.znc/modules/
+   notify:
+     - znc-buildmod
+
+
+ - apt: name=ssl-cert state=present
+   become: yes
+   become_user: root
+ - script: cert-builder.sh creates=~/.znc/znc.pem
+
+
+

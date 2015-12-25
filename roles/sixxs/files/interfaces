@@ -1,0 +1,14 @@
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto sixxs
+iface sixxs inet6 v4tunnel
+  address 2a01:348:6:c::2
+  netmask 64
+  endpoint 77.75.104.126
+  ttl 64
+  up ip -6 link set mtu 1280 dev sixxs
+  up ip -6 route add default via 2a01:348:6:c::1 dev sixxs

@@ -1,0 +1,56 @@
+options:
+  log_output: false
+  dir_mode: normal
+  dir: "cinchize"
+servers:
+  freenode:
+    server: irc.freenode.net
+    port: 7000
+    ssl:
+      use: true
+      verify: true
+    nick: twgbot
+    user: twgbot
+    realname: twgbot
+    password: {{ twg_freenode_password }}
+    shared:
+        admins:
+          - "nickrw"
+    channels:
+      - "##twg"
+    plugins:
+      -
+        class: "TWG::Loader"
+      -
+        class: "TWG::Core"
+        options:
+            game_channel: "##twg"
+            game_timers:
+                registration: 300
+                day: 300
+                day_warn:
+                  - 30
+                  - 10
+                night: 90
+                dramatic_effect: 5
+      -
+        class: "TWG::Seer"
+        options:
+            odds_per_player: 6
+      -
+        class: "TWG::Vigilante"
+        options:
+            odds_per_player: 5
+      -
+        class: "TWG::Witch"
+        options:
+            odds_per_player: 5
+      -
+        class: "TWG::Invite"
+        options:
+            blacklist:
+              - "bma"
+      -
+        class: "TWG::Moretime"
+        options:
+            seconds: 120

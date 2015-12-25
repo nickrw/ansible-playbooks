@@ -1,0 +1,5 @@
+---
+ - name: znc-buildmod
+   script: files/znc/buildmods.sh
+ - name: znc-permissions
+   command: sh -c 'chmod 0640 ~/.znc/configs/*.conf'

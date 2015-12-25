@@ -1,0 +1,49 @@
+---
+ - name: self
+   user: name=nickrw groups=sudo,adm append=yes shell=/bin/bash
+ - name: comfort-packages
+   apt:
+     update_cache: yes
+     state: latest
+     name:
+       - ack-grep
+       - apg
+       - build-essential
+       - devscripts
+       - dnsutils
+       - telnet
+       - dos2unix
+       - ethtool
+       - git
+       - gnupg-agent
+       - gnupg2
+       - iotop
+       - irssi
+       - less
+       - lsof
+       - mosh
+       - mutt
+       - ncdu
+       - nmap
+       - psmisc
+       - rename
+       - reportbug
+       - ruby2.1
+       - s3cmd
+       - screen
+       - sensible-utils
+       - silversearcher-ag
+       - strace
+       - tcpdump
+       - tmux
+       - traceroute
+       - mtr
+       - unzip
+       - vim-nox
+       - w3m
+       - wget
+       - whois
+       - ssl-cert
+ - alternatives: name={{item}} path=/usr/bin/vim.nox
+   with_items: [ 'vim', 'editor' ]
+ - alternatives: name=pager path=/bin/less
